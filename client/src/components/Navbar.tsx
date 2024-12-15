@@ -5,7 +5,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white shadow">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-blue-600">
+        <Link to="/" className="text-2xl font-bold text-red-600">
           CanSmile
         </Link>
         <div>

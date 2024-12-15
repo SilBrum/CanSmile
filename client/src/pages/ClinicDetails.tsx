@@ -23,7 +23,7 @@ const ClinicDetails: React.FC = () => {
   useEffect(() => {
     const fetchClinic = async () => {
       try {
-        const response = await axios.get(`http://localhost:6000/api/clinics/${id}`);
+        const response = await axios.get(`/api/clinics/${id}`);
         setClinic(response.data);
       } catch (err) {
         console.error('Error fetching clinic details:', err);

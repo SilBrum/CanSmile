@@ -1,40 +1,75 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-interface SearchBarProps {
-  onSearch: (type: string, query: string) => void;
-}
+const SearchBar: React.FC = () => {
+  const [selectedTreatment, setSelectedTreatment] = useState('');
+  const [selectedDestination, setSelectedDestination] = useState('');
+  const navigate = useNavigate();
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [searchType, setSearchType] = useState('Treatment');
-  const [query, setQuery] = useState('');
+  const treatments = [
+    'Dental Implant',
+    'Teeth Whitening',
+    'Veneers',
+    'Root Canal',
+    'Braces',
+    'Crowns',
+    'Fillings',
+  ];
+
+  const destinations = [
+    'Cancun, Mexico',
+    'Rio de Janeiro, Brazil',
+    'San Jose, Costa Rica',
+    'Bangkok, Thailand',
+    'Toronto, Canada',
+    'Punta Cana, Dominican Republic',
+    'Budapest, Hungary',
+    'Mumbai, India',
+    'Istanbul, Turkey',
+    'Havana, Cuba',
+  ];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim()) {
-      onSearch(searchType, query);
-    }
+
+    // Build query string
+    const queryParams = new URLSearchParams();
+    if (selectedTreatment) queryParams.append('treatment', selectedTreatment);
+    if (selectedDestination) queryParams.append('destination', selectedDestination);
+
+    // Navigate to search results
+    navigate(`/search/listing?${queryParams.toString()}`);
   };
 
   return (
     <form onSubmit={handleSearch} className="flex items-center bg-white shadow-md rounded p-4">
-      {/* Dropdown */}
+      {/* Treatment Dropdown */}
       <select
-        value={searchType}
-        onChange={(e) => setSearchType(e.target.value)}
+        value={selectedTreatment}
+        onChange={(e) => setSelectedTreatment(e.target.value)}
         className="border border-gray-300 rounded-l-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
-        <option value="Treatment">Treatment</option>
-        <option value="Destination">Destination</option>
+        <option value="">Select a treatment</option>
+        {treatments.map((treatment, index) => (
+          <option key={index} value={treatment}>
+            {treatment}
+          </option>
+        ))}
       </select>
 
-      {/* Input Field */}
-      <input
-        type="text"
-        placeholder={`Search by ${searchType.toLowerCase()}...`}
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className="flex-grow border-t border-b border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+      {/* Destination Dropdown */}
+      <select
+        value={selectedDestination}
+        onChange={(e) => setSelectedDestination(e.target.value)}
+        className="border border-gray-300 rounded-l-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="">Select a destination</option>
+        {destinations.map((destination, index) => (
+          <option key={index} value={destination}>
+            {destination}
+          </option>
+        ))}
+      </select>
 
       {/* Search Button */}
       <button

@@ -1,28 +1,38 @@
 const Clinic = require('../models/Clinic');
 
-// Get all clinics
-exports.getClinics = async (req, res) => {
-  const { treatment, location } = req.query;
-  let filter = {};
+// Get all clinics or filter by treatment
+const getClinics = async (req, res) => {
+  const { treatment, destination } = req.query;
 
-  if (location) {
-    filter.location = { $regex: location, $options: 'i' };
-  }
-
-  if (treatment) {
-    filter['services.name'] = { $regex: treatment, $options: 'i' };
-  }
+  console.log('Query parameters:', { treatment, destination }); // Debug log
 
   try {
-    const clinics = await Clinic.find(filter);
+    // Build a dynamic query object
+    const query = {};
+    if (treatment) {
+      query['services.name'] = { $regex: new RegExp(treatment, 'i') }; // Case-insensitive match
+    }
+    if (destination) {
+      query.location = { $regex: new RegExp(destination, 'i') }; // Case-insensitive match
+    }
+
+    console.log('Generated query:', query); // Debug log
+
+    // Fetch clinics based on the query and sort by rating in descending order
+    const clinics = await Clinic.find(query).sort({ rating: -1 });
+    console.log('Clinics found:', clinics); // Debug log
+
     res.json(clinics);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Error fetching clinics:', err);
+    res.status(500).json({ message: 'Failed to fetch clinics' });
   }
 };
 
+
+
 // Get clinic by ID
-exports.getClinicById = async (req, res) => {
+const getClinicById = async (req, res) => {
   try {
     const clinic = await Clinic.findById(req.params.id);
     if (!clinic) {
@@ -30,22 +40,33 @@ exports.getClinicById = async (req, res) => {
     }
     res.json(clinic);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Error fetching clinic by ID:', err);
+    res.status(500).json({ message: 'Failed to fetch clinic' });
   }
 };
 
-// Add a new clinic
-exports.addClinic = async (req, res) => {
-  if (req.user.role !== 'dentist') {
-    return res.status(403).json({ message: 'Access denied' });
-  }
+// Add a new clinic (for dentists)
+const addClinic = async (req, res) => {
+  const { name, imageUrl, rating, reviews, services } = req.body;
 
-  const { name, location, imageUrl, services } = req.body;
   try {
-    const clinic = new Clinic({ name, location, imageUrl, services });
+    const clinic = new Clinic({
+      name,
+      imageUrl,
+      rating,
+      reviews,
+      services,
+    });
     await clinic.save();
     res.status(201).json({ message: 'Clinic added successfully', clinic });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Error adding clinic:', err);
+    res.status(500).json({ message: 'Failed to add clinic' });
   }
+};
+
+module.exports = {
+  getClinics,
+  getClinicById,
+  addClinic,
 };
