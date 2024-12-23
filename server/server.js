@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
 const clinicRoutes = require('./routes/clinicRoutes');
 const flightRoutes = require('./routes/flightRoutes');
-const appointmentRoutes = require('./routes/appointmentRoutes'); // Import appointment routes
+const appointmentRoutes = require('./routes/appointmentRoutes');
 
 dotenv.config();
 
@@ -16,12 +16,24 @@ const app = express();
 app.use(express.json());
 
 // CORS Configuration
+const allowedOrigins = [
+  'http://localhost:5174', // Local development
+  'https://cansmile-front.onrender.com', // Deployed front-end
+];
+
 const corsOptions = {
-  origin: 'http://localhost:5174',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); 
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
+
 app.use(cors(corsOptions));
 
 // Verify Environment Variables
@@ -49,7 +61,7 @@ connectDB();
 app.use('/api/users', userRoutes);
 app.use('/api/clinics', clinicRoutes);
 app.use('/api/flights', flightRoutes);
-app.use('/api/appointments', appointmentRoutes); // Use appointment routes
+app.use('/api/appointments', appointmentRoutes);
 
 // Server Listener
 const PORT = process.env.PORT || 6000;
