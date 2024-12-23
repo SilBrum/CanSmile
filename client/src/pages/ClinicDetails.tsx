@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
-import FlightSearch from '../components/flightSearch';
+import FlightSearch from '../components/FlightSearch';
 import PriceComparison from '../components/PriceComparison';
 import Footer from '../components/Footer';
 
