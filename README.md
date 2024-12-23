@@ -14,6 +14,8 @@ CanSmile is a web application designed to help canadian users find affordable de
     - User Profiles: Manage personal details and view favorites and appointments.
     - Favorites: Save preferred clinics for easy access.
     - Appointment Booking: Book appointments directly with clinics.
+<img width="1039" alt="Screenshot 2024-12-22 at 9 54 18 PM" src="https://github.com/user-attachments/assets/49f1f96a-8381-42a6-9618-ffc5909f77d3" />
+<img width="1040" alt="Screenshot 2024-12-22 at 9 56 37 PM" src="https://github.com/user-attachments/assets/ee3b8170-5fa1-49cf-9fb3-93fd5a6fe430" />
 
 ## Installation Instructions
 **Prerequisites**
