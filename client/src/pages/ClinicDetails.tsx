@@ -37,6 +37,7 @@ const ClinicDetails: React.FC = () => {
     }
   }, [navigate]);
 
+  // Fetch clinic details
   useEffect(() => {
     const fetchClinic = async () => {
       try {
@@ -49,6 +50,7 @@ const ClinicDetails: React.FC = () => {
     fetchClinic();
   }, [id]);
 
+  // Handle booking
   const handleBooking = async () => {
     const token = localStorage.getItem('token'); // Check if token exists
     if (!token) {
@@ -56,24 +58,24 @@ const ClinicDetails: React.FC = () => {
       navigate('/login'); // Redirect to login
       return;
     }
-  
+
     if (!appointmentDate || !appointmentTime) {
       alert('Please select a date and time for your appointment.');
       return;
     }
-  
+
     setIsBooking(true);
-  
+
     try {
       const bookingData = {
         clinicId: id,
         appointment: { date: appointmentDate, time: appointmentTime },
       };
-  
+
       await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/appointments/book`, bookingData, {
         headers: { 'x-auth-token': token },
       });
-  
+
       alert('Appointment request sent successfully.');
     } catch (err) {
       console.error('Error booking appointment:', err);
@@ -83,6 +85,7 @@ const ClinicDetails: React.FC = () => {
     }
   };
 
+  // Handle adding clinic to favorites
   const handleFavorite = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -90,7 +93,7 @@ const ClinicDetails: React.FC = () => {
       navigate('/login'); // Redirect to login
       return;
     }
-  
+
     try {
       await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/users/favorites`,
@@ -102,9 +105,8 @@ const ClinicDetails: React.FC = () => {
       console.error('Error favoriting clinic:', err);
       alert('Failed to favorite clinic.');
     }
-    
   };
-  
+
   if (!clinic) {
     return <div>Loading...</div>;
   }
@@ -122,15 +124,15 @@ const ClinicDetails: React.FC = () => {
               <span className="text-yellow-500">{'⭐'.repeat(Math.round(clinic.rating))}</span>
               <span className="ml-2 text-gray-600">({clinic.reviews} reviews)</span>
               <button
-               onClick={handleFavorite}
-               className="flex items-center space-x-2 bg-transparent border-none text-red-500 hover:text-red-700 mt-4"
-                >
-               <span role="img" aria-label="heart" className="text-xl">
-                ❤️
-              </span>
-               <span className="text-lg font-semibold">Favorite</span>
-                </button>
-              </div>
+                onClick={handleFavorite}
+                className="flex items-center space-x-2 bg-transparent border-none text-red-500 hover:text-red-700 mt-4"
+              >
+                <span role="img" aria-label="heart" className="text-xl ml-5">
+                  ❤️
+                </span>
+                <span className="text-lg font-semibold">Favorite</span>
+              </button>
+            </div>
             <h3 className="text-2xl font-bold mt-4">Services</h3>
             <table className="w-full mt-2">
               <thead>
@@ -169,45 +171,51 @@ const ClinicDetails: React.FC = () => {
         </div>
 
         <div className="mt-8">
-          <h3 className="text-2xl font-bold text-blue-600">Book an Appointment</h3>
-          <label htmlFor="appointmentDate" className="block font-bold mt-4">
-            Select Date:
-          </label>
-          <input
-            type="date"
-            id="appointmentDate"
-            value={appointmentDate}
-            onChange={(e) => setAppointmentDate(e.target.value)}
-            className="border px-2 py-1"
-          />
-
-          <label htmlFor="appointmentTime" className="block font-bold mt-4">
-            Select Time:
-          </label>
-          <select
-            id="appointmentTime"
-            value={appointmentTime}
-            onChange={(e) => setAppointmentTime(e.target.value)}
-            className="border px-2 py-1"
-          >
-            <option value="" disabled>Select Time</option>
-            <option value="09:00">09:00 AM</option>
-            <option value="10:00">10:00 AM</option>
-            <option value="11:00">11:00 AM</option>
-            <option value="13:00">01:00 PM</option>
-            <option value="14:00">02:00 PM</option>
-            <option value="15:00">03:00 PM</option>
-          </select>
-
-          <button
-            onClick={handleBooking}
-            disabled={isBooking}
-            className={`bg-blue-500 text-white px-4 py-2 mt-4 rounded ${
-              isBooking ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'
-            }`}
-          >
-            {isBooking ? 'Booking...' : 'Book Appointment'}
-          </button>
+          <h3 className="text-2xl font-bold text-blue-900">Book an Appointment</h3>
+          <div className="flex items-center space-x-4">
+            <div className="flex flex-col">
+              <label htmlFor="appointmentDate" className="font-semibold text-gray-700">
+                Select Date:
+              </label>
+              <input
+                type="date"
+                id="appointmentDate"
+                value={appointmentDate}
+                onChange={(e) => setAppointmentDate(e.target.value)}
+                className="p-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="appointmentTime" className="font-semibold text-gray-700">
+                Select Time:
+              </label>
+              <select
+                id="appointmentTime"
+                value={appointmentTime}
+                onChange={(e) => setAppointmentTime(e.target.value)}
+                className="p-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="" disabled>
+                  Select Time
+                </option>
+                <option value="09:00">09:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="13:00">01:00 PM</option>
+                <option value="14:00">02:00 PM</option>
+                <option value="15:00">03:00 PM</option>
+              </select>
+            </div>
+            <button
+              onClick={handleBooking}
+              disabled={isBooking}
+              className={`p-2 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                isBooking ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              {isBooking ? 'Booking...' : 'Book Appointment'}
+            </button>
+          </div>
         </div>
       </div>
       <Footer />

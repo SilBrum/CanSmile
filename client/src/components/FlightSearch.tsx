@@ -69,7 +69,7 @@ const FlightSearch: React.FC<FlightSearchProps> = ({ destination, onFlightSelect
         placeholder="Departure Location (e.g., YVR)"
         value={origin}
         onChange={handleOriginChange}
-        className="w-1/3 p-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        className="w-1/3 p-2 rounded-all border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
       />
       <ul className="suggestions-list">
         {suggestions.map((suggestion, index) => (
@@ -83,7 +83,7 @@ const FlightSearch: React.FC<FlightSearchProps> = ({ destination, onFlightSelect
         type="date"
         value={departureDate}
         onChange={(e) => setDepartureDate(e.target.value)}
-        className="p-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        className="p-2 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
       />
       <button
         onClick={fetchFlights}
