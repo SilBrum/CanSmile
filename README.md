@@ -3,6 +3,9 @@
 
 CanSmile is a web application designed to help canadian users find affordable dental care by connecting them to clinics offering dental tourism services worldwide. It enables users to search for clinics, compare costs, book appointments, and even explore flight options to their chosen destinations.
 
+<img width="1312" alt="image" src="https://github.com/user-attachments/assets/70c9e083-f0f0-4eee-b1c1-a1031f6f8bf6" />
+
+
 **Features**
 
     - Search Clinics: Browse and search clinics based on treatments and locations.
