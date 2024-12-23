@@ -40,7 +40,7 @@ const ClinicDetails: React.FC = () => {
   useEffect(() => {
     const fetchClinic = async () => {
       try {
-        const response = await axios.get(`/api/clinics/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/clinics/${id}`);
         setClinic(response.data);
       } catch (err) {
         console.error('Error fetching clinic details:', err);

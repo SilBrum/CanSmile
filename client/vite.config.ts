@@ -1,17 +1,18 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   server: {
-    proxy: {
-      '/api': { target: 'http://localhost:6000', 
-      changeOrigin: true
-      }, }},
-      css: {
-        postcss: './postcss.config.js',
+    proxy: mode === 'development' ? {
+      '/api': {
+        target: 'http://localhost:6000',
+        changeOrigin: true,
       },
+    } : undefined, // No proxy in production
+  },
+  css: {
+    postcss: './postcss.config.js',
+  },
   plugins: [react()],
-})
-
-
+}));

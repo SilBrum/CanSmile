@@ -32,7 +32,7 @@ const SearchResults: React.FC = () => {
     const fetchClinics = async () => {
       if (treatment || destination) {
       try {
-        const response = await axios.get(`/api/clinics`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/clinics`, {
           params: { treatment, destination },
         });
         console.log('Clinics fetched:', response.data);

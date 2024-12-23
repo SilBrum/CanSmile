@@ -48,7 +48,7 @@ const Profile: React.FC = () => {
   // Fetch user data from the backend
   const fetchUserData = async () => {
     try {
-      const response = await axios.get('/api/users/profile', {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/users/profile`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -62,7 +62,7 @@ const Profile: React.FC = () => {
   // Fetch appointments data
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get('/api/users/appointments', {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/users/appointments`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -76,7 +76,7 @@ const Profile: React.FC = () => {
   // Fetch favorites data
   const fetchFavorites = async () => {
     try {
-      const response = await axios.get('/api/users/favorites', {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/users/favorites`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

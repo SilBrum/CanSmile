@@ -18,7 +18,7 @@ const FlightSearch: React.FC<FlightSearchProps> = ({ destination, onFlightSelect
   const fetchFlights = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/flights/search', {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/flights/search`, {
         params: { origin, destination, departureDate },
       });
       setFlights(response.data);
@@ -31,7 +31,7 @@ const FlightSearch: React.FC<FlightSearchProps> = ({ destination, onFlightSelect
 
   const fetchSuggestions = async (query: string) => {
     try {
-      const response = await axios.get('/api/flights/autocomplete', {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/flights/autocomplete`, {
         params: { query },
       });
       setSuggestions(response.data);
