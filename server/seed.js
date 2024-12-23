@@ -8,7 +8,7 @@ const clinics = [
   {
     name: 'Smile Bright Dental',
     location: 'Cancun, Mexico',
-    imageUrl: 'https://www.keshavarzdentistry.com/wp-content/uploads/2023/10/Dental-Office-and-Dental-Clinic-Differences-in-Brampton-768x403.jpg',
+    imageUrl: 'https://plus.unsplash.com/premium_photo-1675686363399-91ad6111f82d?q=80&w=2957&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     services: [
       { name: 'Dental Implant', price: 1200, duration: '2 hours' },
       { name: 'Teeth Whitening', price: 200, duration: '1 hour' },
@@ -19,7 +19,7 @@ const clinics = [
   {
     name: 'Sunshine Dental Care',
     location: 'Rio de Janeiro, Brazil',
-    imageUrl: 'https://www.woodburydentalcare.com/files/2020/04/Dental-Office-2.jpg',
+    imageUrl: 'https://zenithdental.in/wp-content/uploads/2023/04/dr-angad-khurana-dentist-in-noida.webp',
     services: [
       { name: 'Veneers', price: 800, duration: '3 hours' },
       { name: 'Teeth Whitening', price: 250, duration: '1.5 hours' },
@@ -30,7 +30,7 @@ const clinics = [
   {
     name: 'Cosmetic Smiles',
     location: 'San Jose, Costa Rica',
-    imageUrl: 'https://www.britannica.com/explore/savingearth/wp-content/uploads/sites/4/2019/02/Dentist-cleaning-office.png',
+    imageUrl: 'https://elitefitout.com.au/wp-content/uploads/2020/06/Elite_Fitouts_GC_Dental_Solutions-30-1.jpg',
     services: [
       { name: 'Root Canal', price: 300, duration: '2 hours' },
       { name: 'Dental Crown', price: 500, duration: '3 hours' },
@@ -41,7 +41,7 @@ const clinics = [
   {
     name: 'Pearl Dental Center',
     location: 'Bangkok, Thailand',
-    imageUrl: 'https://images.unsplash.com/photo-1579370318449-5f2f6c9a8392?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60',
+    imageUrl: 'https://xo-care.com/wp-content/uploads/2023/03/Dental-clinic-layout-header-1024x613.jpg',
     services: [
       { name: 'Dental Implant', price: 1100, duration: '2.5 hours' },
       { name: 'Orthodontics (Braces)', price: 1500, duration: 'Multiple visits' },
@@ -51,8 +51,8 @@ const clinics = [
   },
   {
     name: 'White Smile Dental',
-    location: 'Toronto, Canada',
-    imageUrl: 'https://images.unsplash.com/photo-1588776811926-57c80e306416?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60',
+    location: 'Rio de Janeiro, Brazil',
+    imageUrl: 'https://www.dentalelements.ca/wp-content/uploads/2020/07/five-characteristics-of-the-best-dental-clinics.jpg',
     services: [
       { name: 'Teeth Cleaning', price: 100, duration: '30 minutes' },
       { name: 'Cavity Filling', price: 150, duration: '1 hour' },
@@ -63,7 +63,7 @@ const clinics = [
   {
     name: 'Healthy Smile Dental',
     location: 'Punta Cana, Dominican Republic',
-    imageUrl: 'https://images.unsplash.com/photo-1593311520938-47d1647b8dd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     services: [
       { name: 'Dental Implant', price: 1300, duration: '2 hours' },
       { name: 'Teeth Whitening', price: 250, duration: '1 hour' },
@@ -74,7 +74,7 @@ const clinics = [
   {
     name: 'Bright Dental Clinic',
     location: 'Budapest, Hungary',
-    imageUrl: 'https://images.unsplash.com/photo-1579986424098-9cebee31f27b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     services: [
       { name: 'Root Canal', price: 350, duration: '2 hours' },
       { name: 'Orthodontics (Braces)', price: 2000, duration: 'Multiple visits' },
@@ -85,7 +85,7 @@ const clinics = [
   {
     name: 'Perfect Smile Clinic',
     location: 'Mumbai, India',
-    imageUrl: 'https://images.unsplash.com/photo-1519864504468-7a568021eb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1629909614456-6b1c5c94cecc?q=80&w=2988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     services: [
       { name: 'Teeth Whitening', price: 180, duration: '1 hour' },
       { name: 'Veneers', price: 750, duration: '3 hours' },
@@ -96,7 +96,7 @@ const clinics = [
   {
     name: 'Global Dental Solutions',
     location: 'Istanbul, Turkey',
-    imageUrl: 'https://images.unsplash.com/photo-1597275199352-9eced52f2a55?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1643660526741-094639fbe53a?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     services: [
       { name: 'Dental Implant', price: 1000, duration: '2 hours' },
       { name: 'Dental Crown', price: 450, duration: '2 hours' },
@@ -107,7 +107,7 @@ const clinics = [
   {
     name: 'Sunny Dental Center',
     location: 'Havana, Cuba',
-    imageUrl: 'https://images.unsplash.com/photo-1588334437291-5b6a1cc15454?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1643660527098-559f89e45a92?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     services: [
       { name: 'Teeth Cleaning', price: 100, duration: '30 minutes' },
       { name: 'Cavity Filling', price: 120, duration: '1 hour' },

@@ -7,6 +7,9 @@ import ClinicDetails from './pages/ClinicDetails';
 import HowItWorks from './pages/HowItWorks';
 import FAQ from './pages/FAQ';
 import SearchResults from './pages/searchResults';
+import Profile from './pages/Profile';
+import Favorites from './pages/Favorites';
+import Appointments from './pages/Appointments';
 
 const App: React.FC = () => (
   <Router>
@@ -19,6 +22,9 @@ const App: React.FC = () => (
       <Route path="/HowItWorks" element={<HowItWorks />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/search/listing" element={<SearchResults />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/favorites" element={<Favorites />} />
+      <Route path="/appointments" element={<Appointments />} />
     </Routes>
   </Router>
 );

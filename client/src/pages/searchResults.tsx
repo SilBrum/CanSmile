@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import ClinicCard from '../components/ClinicCard';
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 interface Clinic {
   _id: string;
   name: string;
+  location: string;
   imageUrl: string;
   rating: number;
   reviews: number;
@@ -46,6 +49,8 @@ const SearchResults: React.FC = () => {
   }, [treatment, destination]);
 
   return (
+    <>
+    <Navbar />
     <div className="container mx-auto py-10">
       <h1 className="text-3xl font-bold text-center text-red-600">
         Clinics Offering {decodeURIComponent(treatment ? decodeURIComponent(treatment): 'Unknown Treatment')}
@@ -57,6 +62,7 @@ const SearchResults: React.FC = () => {
               key={clinic._id}
               id={clinic._id}
               name={clinic.name}
+              location={clinic.location}
               imageUrl={clinic.imageUrl}
               rating={clinic.rating}
               reviews={clinic.reviews}
@@ -68,6 +74,8 @@ const SearchResults: React.FC = () => {
         )}
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

@@ -8,6 +8,9 @@ export default defineConfig({
       '/api': { target: 'http://localhost:6000', 
       changeOrigin: true
       }, }},
+      css: {
+        postcss: './postcss.config.js',
+      },
   plugins: [react()],
 })
 

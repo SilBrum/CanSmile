@@ -42,12 +42,12 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex items-center bg-white shadow-md rounded p-4">
+    <form onSubmit={handleSearch} className="flex items-center bg-white shadow-md rounded-full p-4">
       {/* Treatment Dropdown */}
       <select
         value={selectedTreatment}
         onChange={(e) => setSelectedTreatment(e.target.value)}
-        className="border border-gray-300 rounded-l-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border border-gray-300 rounded-l-full p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500"
       >
         <option value="">Select a treatment</option>
         {treatments.map((treatment, index) => (
@@ -61,7 +61,7 @@ const SearchBar: React.FC = () => {
       <select
         value={selectedDestination}
         onChange={(e) => setSelectedDestination(e.target.value)}
-        className="border border-gray-300 rounded-l-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border border-gray-300 rounded-r-full p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500"
       >
         <option value="">Select a destination</option>
         {destinations.map((destination, index) => (
@@ -74,7 +74,7 @@ const SearchBar: React.FC = () => {
       {/* Search Button */}
       <button
         type="submit"
-        className="bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600"
+        className="bg-red-600 text-white p-2 hover:bg-red-800 rounded-full ml-2"
       >
         Search
       </button>

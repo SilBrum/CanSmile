@@ -13,7 +13,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ name, rating, review }) => {
         <span className="text-yellow-500">{'⭐'.repeat(rating)}</span>
         <span className="ml-2 text-gray-600">({rating}/5)</span>
       </div>
-      <h3 className="text-lg font-bold text-blue-600">{name}</h3>
+      <h3 className="text-lg font-bold text-red-600">{name}</h3>
       <p className="text-gray-700 mt-2">{review}</p>
     </div>
   );
