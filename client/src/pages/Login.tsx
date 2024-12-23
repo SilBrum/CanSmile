@@ -11,7 +11,7 @@ const Login: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/api/users/login`, {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/users/login`, {
         email,
         password,
       });

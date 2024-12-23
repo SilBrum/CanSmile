@@ -89,7 +89,7 @@ const Profile: React.FC = () => {
 
   const handleCancelAppointment = async (appointmentId: string) => {
     try {
-      await axios.delete(`/api/users/appointments/${appointmentId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/users/appointments/${appointmentId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -125,7 +125,7 @@ const Profile: React.FC = () => {
         formData.append('profilePicture', selectedFile);
       }
 
-      await axios.post('/api/users/profile/update', formData, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/users/profile/update`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',

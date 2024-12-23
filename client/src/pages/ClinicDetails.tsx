@@ -70,7 +70,7 @@ const ClinicDetails: React.FC = () => {
         appointment: { date: appointmentDate, time: appointmentTime },
       };
   
-      await axios.post('/api/appointments/book', bookingData, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/appointments/book`, bookingData, {
         headers: { 'x-auth-token': token },
       });
   
@@ -93,7 +93,7 @@ const ClinicDetails: React.FC = () => {
   
     try {
       await axios.post(
-        '/api/users/favorites',
+        `${import.meta.env.VITE_API_BASE_URL}/api/users/favorites`,
         { clinicId: id },
         { headers: { 'x-auth-token': token } }
       );

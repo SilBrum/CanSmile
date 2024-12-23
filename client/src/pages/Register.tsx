@@ -13,7 +13,7 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post(`/api/users/register`, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/users/register`, {
         name,
         email,
         password,
